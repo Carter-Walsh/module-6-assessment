@@ -1,16 +1,13 @@
-/* Tic-Tac Javascript */
 console.log("hello world");
 
   // The board is a simple 9-element array of null-for-empty, "X", or "O"
   var board;
-
 
   function initializeBoard() {
       // Initialize board to empty
 
       board = [null, null, null, null, null, null, null, null, null];
   }
-
 
   function updateBoard() {
       // Update visual game board from board data structure
@@ -20,7 +17,6 @@ console.log("hello world");
           $("#cell-" + i).text(cell);
       }
   }
-
 
   function isBoardFull() {
       // Return true if board is full
@@ -122,7 +118,8 @@ console.log("hello world");
       var gameOver = false;
 
       if (winner) {
-          $("h1").text(winner + " lost");
+          $("h1").text(winner + " won!");
+          $("h1").append(" Refresh to play again!")
           gameOver = true;
       }
 
@@ -176,9 +173,14 @@ console.log("hello world");
 
       // Allow clicks on game board
       $('#game-board td').on('click', handleClick);
+    
+    //   console.log(evt.currentTarget.innerText);
+      this.innerText = "Go!";
 
       // Remove start-game button
-      $(this).remove();
+      setTimeout(() => {
+          $("#start-btn").remove();
+      }, 2000)
   }
 
 
